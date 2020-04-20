@@ -25,6 +25,14 @@
                 {% endif %}
             {% endwith %}
         </div>
+        <span class="user">
+            {% if request.user.is_authenticated %}
+                Witaj {{ request.user.first_name }}
+                <a href="{% url 'account:logout' %}">Wyloguj</a>
+            {% else %}
+                <a href="{% url 'account:login' %}">Zaloguj</a>
+            {% endif %}
+        </span>
     </div>
     <div id="content">
         {% block content %}
