@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from myshop.models import Product
 
@@ -13,6 +14,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+
 
     class Meta:
         ordering = ('-created',)

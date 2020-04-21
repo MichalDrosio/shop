@@ -1,0 +1,6 @@
+<form action="." method="post">
+    {{ user_form }}
+    {{ profile_form }}
+    {% csrf_token %}
+    <p><input type="submit" value="Zapisz"></p>
+</form>

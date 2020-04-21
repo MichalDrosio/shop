@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
 
-</body>
-</html>
+{% block title %}
+Rejestracja
+{% endblock %}
+
+{% block content %}
+<h1>Utwórz konto</h1>
+<p>Wypełnij formularz aby założyć konto</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Utwórz konto"></p>
+    </form>
+{% endblock %}
