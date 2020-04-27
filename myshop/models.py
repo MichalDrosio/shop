@@ -38,3 +38,8 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('myshop:product_detail', args=[self.id, self.slug])
+
+
+class Pictrue(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    pictrue = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)

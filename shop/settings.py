@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'coupons.apps.CouponsConfig',
 
 
+
 ]
 
 MIDDLEWARE = [
@@ -88,7 +89,7 @@ DATABASES = {
     'default': {
         'HOST': '127.0.0.1',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shop3',
+        'NAME': 'shop',
         'USER': 'postgres',
         'PASSWORD': 'coderslab',
     }

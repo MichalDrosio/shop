@@ -30,7 +30,8 @@
                 Witaj {{ request.user.first_name }}
                 <a href="{% url 'account:logout' %}">Wyloguj</a>
             {% else %}
-                <a href="{% url 'account:login' %}">Zaloguj</a>
+                <ul><a href="{% url 'account:login' %}">Zaloguj</a></ul>
+                <ul><a href="{% url 'account:register' %}">Załóż konto</a></ul>
             {% endif %}
         </span>
     </div>
