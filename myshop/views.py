@@ -5,6 +5,7 @@ from django.views import View
 from django.views.generic import FormView
 from taggit.models import Tag
 from cart.cart import Cart
+from .forms import SearchProductFrom
 
 from .models import Category, Product, Pictrue
 from cart.forms import CardAddProductFrom
@@ -36,6 +37,7 @@ def product_detail(request, id, slug):
     pictrues = Pictrue.objects.filter(product_id=product)
     cart_product_form = CardAddProductFrom()
     return render(request, 'myshop/detail.html', context={'product':product, 'cart_product_form':cart_product_form, 'pictrues':pictrues})
+
 
 
 

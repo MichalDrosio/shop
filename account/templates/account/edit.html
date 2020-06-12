@@ -1,6 +1,16 @@
-<form action="." method="post">
-    {{ user_form }}
-    {{ profile_form }}
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Edycja profilu
+{% endblock %}
+
+{% block content %}
+<div class="form-row">
+<form action="." method="post" enctype="multipart/form-data">
+    <ul>{{ user_form.as_p }}</ul>
+    <ul>{{ profile_form.as_p }}</ul>
     {% csrf_token %}
     <p><input type="submit" value="Zapisz"></p>
 </form>
+</div>
+{% endblock %}

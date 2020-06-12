@@ -8,7 +8,9 @@ Logowanie
 {% block content %}
 <h1>Logowanie</h1>
 <p>Wypełnij formularz aby się zalogować.</p>
+    {{ errors }}
     <form action="." method="post">
+
         {{ form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Zaloguj"></p>

@@ -27,8 +27,9 @@
         </div>
         <span class="user">
             {% if request.user.is_authenticated %}
-                Witaj {{ request.user.first_name }}
+                Witaj <a href="{% url 'account:user'%}" >{{ request.user.first_name }}</a>
                 <a href="{% url 'account:logout' %}">Wyloguj</a>
+
             {% else %}
                 <ul><a href="{% url 'account:login' %}">Zaloguj</a></ul>
                 <ul><a href="{% url 'account:register' %}">Załóż konto</a></ul>
