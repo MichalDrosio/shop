@@ -1,0 +1,12 @@
+
+
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Profil
+{% endblock %}
+
+{% block edit_user %}
+    <p><a href="{% url 'account:edit-user' %}">Edytuj konto</a></p>
+    <p><a href="{% url 'orders:history' %}" >Historia zamówień</a></p>
+{% endblock %}

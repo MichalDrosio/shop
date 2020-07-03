@@ -17,8 +17,31 @@
     {% endfor %}
 
     <h1>{{ product.name }}</h1>
+    {% with total_likes=product.users_like.count users_like=product.users_like.all %}
+        <div class="product-info">
+        <div>
+            <span class="count">
+                <span class="total">{{ total_likes }}</span> polubień
+            </span>
+            <a href="#" data-id="{{ product.id }}" data-actions-icnt="{% if request.user in users_like %}
+            un{% endif %}like" class="like-button">{% if request.user not in users_like %}
+                Lubię
+                {% else %}
+            Nie lubię
+            {% endif %}
+            </a>
+
+        </div>
+        </div>
+    {% endwith %}
+    <div class="tag">
+    {% for tag in product.tags.all %}
+        <a href="{% url 'myshop:product_list_by_tag' tag.slug %}"> {{ tag.name }}</a>
+    {% endfor %}
+    </div>
     <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a> </h2>
     <p class="price">{{ product.price }} zł</p>
+    <p class="count">{{ product.number_of_products }}</p>
     {{ product.description|linebreaks }}
     <form action="{% url 'cart:card_add' product.id %}" method="post">
         {{ cart_product_form }}
@@ -26,5 +49,5 @@
         <input type="submit" value="Dodaj do koszyka">
     </form>
     </div>
-
 {% endblock %}
+

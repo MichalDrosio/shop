@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
+from localflavor.pl.forms import PLPostalCodeField
 
 from account.models import ProfileUser
-from account.validators import number_selphone, check_postal_code
+from account.validators import number_selphone
 
 
 class LoginForm(forms.Form):
@@ -40,7 +41,7 @@ class UserEditForm(forms.ModelForm):
 
 class UserProfileForm(forms.ModelForm):
     nr_selfphone = forms.CharField(validators=[number_selphone])
-    postal_code = forms.CharField(validators=[check_postal_code])
+    postal_code = PLPostalCodeField()
 
     class Meta:
         model = ProfileUser

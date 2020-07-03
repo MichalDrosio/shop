@@ -26,6 +26,7 @@
             {% endwith %}
         </div>
         <span class="user">
+            <div>
             {% if request.user.is_authenticated %}
                 Witaj <a href="{% url 'account:user'%}" >{{ request.user.first_name }}</a>
                 <a href="{% url 'account:logout' %}">Wyloguj</a>
@@ -34,12 +35,46 @@
                 <ul><a href="{% url 'account:login' %}">Zaloguj</a></ul>
                 <ul><a href="{% url 'account:register' %}">Załóż konto</a></ul>
             {% endif %}
+{% block edit_user %}
+
+{% endblock %}
+            </div>
         </span>
     </div>
     <div id="content">
+    {% if random_products %}
+        {% for product in random_products %}
+            <a href="{{ product.get_absolute_url }}">
+            <img src="{% if product.image %}{{ product.image.url }}"
+              width='100px'>{% else %}{% static 'img/no_image.png' %}{% endif %} >
+            </a>
+        {% endfor %}
+        
+    {% endif %} 
+    
         {% block content %}
 
         {% endblock %}
     </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1./jquery.min.js"></script>
+<script src="https://cdn.jsdeliver.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+    var crsftoken = $.cookie('crsftoken');
+    function crsfSafeMethod {
+        return(/^(GET|HEAD|OPTIONS|TRACE)$/.test(method)):
+    }
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!crsfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("H-CRSFToken", crsftoken);
+            }
+        }
+    });
+    $(document).ready(function () {
+        {% block domready %}
+
+        {% endblock %}
+    });
+</script>
 </body>
 </html>

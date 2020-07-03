@@ -35,7 +35,7 @@ def order_create(request):
 
 @login_required()
 def orders_history(request):
-    orders = Order.objects.filter(owner=request.user).order_by('created')
+    orders = Order.objects.filter(owner=request.user).order_by('-created')
     return render(request, 'orders/order/history.html', {'orders':orders})
 
 @login_required()

@@ -20,3 +20,4 @@ class ProductAdmin(admin.ModelAdmin):
 class PictrueAdmin(admin.ModelAdmin):
     list_display = ['product']
     list_filter = ['product']
+

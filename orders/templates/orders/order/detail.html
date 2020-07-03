@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Szczegóły zamówienia
+{% endblock %}
+
+{% block content %}
+    <p>Dane zamawiającego</p>
+    <p>Imię: {{ order.first_name }}</p>
+    <p>Nazwisko: {{ order.last_name }}</p>
+    <p>Nr. tel:{{ order.phone }}</p>
+    <p>Miasto: {{ order.city }}</p>
+    <p>Kod pocztowy: {{ order.postal_code }}</p>
+    <p>Adres: {{ order.adress }}</p>
+    <p></p>
+    <p>Wartość całego zamówienia: {{ order.get_total_cost }}</p>
+    <p>Opłacone: {{ order.paid }}</p>
+    <p>
+    {% for item in items %}
+        <p>Produkt:<a href="{{ item.product.get_absolute_url }}"> {{ item.product }}</a></p>
+        <p>Cena za szt.: {{ item.price }}</p>
+        <p>Ilość: {{ item.quantity }}</p>
+        <ul><a href="{{ item.product.get_absolute_url }}">{% if item.product.image %}<img src="{{ item.product.image.url }}"width="50px"/>{% endif %}</a></ul>
+
+    {% endfor %}
+
+    </p>
+
+
+{% endblock %}
